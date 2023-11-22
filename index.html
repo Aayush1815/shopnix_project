@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shopnix Onboarding Wizard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .wizard-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .step-container {
+            display: none;
+        }
+        .step-container.active {
+            display: block;
+        }
+        .step-header {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .btn-next, .btn-prev {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn-next {
+            float: right;
+        }
+        .btn-prev {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container wizard-container">
+        
+    
+
+        <div class="step-container step-1 active">
+            <div class="step-header">Step 1: Select a Theme</div>
+            <p>Welcome to our clothing store! Choose a theme that reflects the style of your brand:</p>
+
+            <div>
+                <img src="casualmenwear.jpg" width="100"  height="150"  alt="alternatetext">
+                <img src="ethnic_men_wear.jpg" width="100"  height="150"  alt="alternatetext">
+                <img src="urban.jpg" width="100"  height="150"  alt="alternatetext">
+                          </div>
+            
+            <label for="theme1" style="margin-right: 35px;" >
+                <input type="radio" id="theme1" name="theme" value="theme1"> Casual
+                             
+            </label>
+            <label for="theme2" style="margin-right: 40px;" >
+                <input type="radio" id="theme2" name="theme" value="theme2">   Ethenic
+            </label>
+            <label for="theme3" >
+                <input type="radio" id="theme3" name="theme" value="theme3">   Trendy Urban
+            </label>
+            <button class="btn-next" onclick="nextStep(1)">Next</button>
+        </div>
+     
+        
+       
+        <div class="step-container step-2">
+            <div class="step-header">Step 2: Add Product Type and Category</div>
+            <p>Let's categorize your clothing items to make your store organized. Add a product type and category for your items:</p>
+            
+            <label for="productType">Product Type:</label>
+            <input type="text" id="productType" name="productType" placeholder="e.g., T-shirts, Jeans" required>
+            
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" placeholder="e.g., Men, Women, Kids" required>
+        
+            <button class="btn-prev" onclick="prevStep(2)">Previous</button>
+            <button class="btn-next" onclick="nextStep(2)">Next</button>
+        </div>
+        
+        
+        <div style="max-height: 500px; overflow-y: scroll;">
+            <div class="step-container step-3">
+                <div class="step-header">Step 3: Pricing</div>
+                <p>Set the pricing for your clothing items. Ensure that your pricing strategy aligns with your brand positioning:</p>
+                
+                <label for="price">Price per item ($):</label>
+                <input type="number" id="price" name="price" placeholder="Enter price" required>
+            
+                <label for="additionalInfo">Additional Information:</label>
+                <textarea id="additionalInfo" name="additionalInfo" placeholder="Add any special information about your pricing or discounts"></textarea>
+                
+                <button class="btn-prev" onclick="prevStep(3)">Previous</button>
+                
+                <a href="#" target="_blank">Pricing Guidelines</a>
+            </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    let currentStep = 1;
+
+    function nextStep(step) {
+        $(`.step-${step}`).removeClass('active');
+        currentStep = step + 1;
+        $(`.step-${currentStep}`).addClass('active');
+    }
+
+    function prevStep(step) {
+        $(`.step-${step}`).removeClass('active');
+        currentStep = step - 1;
+        $(`.step-${currentStep}`).addClass('active');
+    }
+</script>
+
+</body>
+</html>
